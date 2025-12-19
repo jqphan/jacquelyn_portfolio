@@ -1,0 +1,1359 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>jacquelyn's desktop</title>
+
+  <!-- Zen Maru Gothic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;600;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; }
+    body { font-family: "Zen Maru Gothic", sans-serif; }
+
+    .sticker {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  animation: sticker-pop 1.6s ease-out forwards;
+  transform: rotate(var(--rot));
+}
+
+@keyframes sticker-pop {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--rot)) scale(0.95) translateY(0);
+  }
+  15% {
+    opacity: 1;
+    transform: rotate(var(--rot)) scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--rot)) scale(1) translateY(-12px);
+  }
+}
+
+/* ===== Custom Scrollbar ===== */
+.custom-scroll {
+  scrollbar-width: thin;                /* Firefox */
+  scrollbar-color: #656565 transparent; /* thumb track */
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent; /* removes white bg */
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #656565;
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* Hover */
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #4b4b4b;
+}
+
+/* ===== Dark mode ===== */
+.dark .custom-scroll {
+  scrollbar-color: #FFFCF8 transparent;
+}
+
+.dark .custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #FFFCF8;
+}
+
+.dark .custom-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #e6e6e6;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  opacity: 0.7;
+}
+  </style>
+</head>
+
+<body class="bg-[#fffcf8] overflow-hidden">
+
+<!-- ================= BACKGROUND ================= -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+  <!-- MAIN BACKGROUND -->
+  <div
+    id="desktop-bg"
+    class="absolute inset-0
+           bg-[#fffcf8] dark:bg-[#313541]
+           pointer-events-auto"
+  ></div>
+
+  <!-- BOTTOM GRADIENT -->
+  <div
+  class="absolute bottom-0 w-full h-[364px]
+         bg-gradient-to-t
+         from-[#FFDCDC] to-[#FFB9B9]
+         dark:from-[#EF9191] dark:to-[#FFCED1]
+         pointer-events-none
+         animate-gradient"
+></div>
+</div>
+
+  <!-- Greeting -->
+  <h1
+  id="greeting"
+  class="fixed left-1/2 top-[calc(50%-260px)]
+         -translate-x-1/2 text-[80px] leading-none tracking-tight
+         text-center z-10"
+>
+  <span
+    id="greet-hi"
+    data-text="hi,"
+    class="font-medium text-[#656565] dark:text-[#FFFCF8]"
+  ></span>
+  <span
+    id="greet-name"
+    data-text=" i’m jacquelyn!"
+    class="font-bold text-[#ffb3b3] dark:text-[#ED9494]"
+  ></span>
+</h1>
+
+<!-- TOP LEFT CONTROLS -->
+<div
+  class="fixed top-4 left-4 z-[100]
+         flex items-center gap-3"
+>
+  <!-- THEME TOGGLE -->
+  <button
+    id="theme-toggle"
+    class="w-8 h-8 opacity-80 hover:opacity-100 transition"
+    aria-label="Toggle dark mode"
+  >
+    <img
+      id="theme-icon"
+      src="static/lightmode.png"
+      alt="Toggle theme"
+      class="w-full h-full"
+    />
+  </button>
+
+  <!-- VOLUME TOGGLE -->
+  <button
+    id="volume-toggle"
+    class="w-8 h-8 opacity-80 hover:opacity-100 transition"
+    aria-label="Toggle sound"
+  >
+    <img
+      id="volume-icon"
+      src="static/volumeon.png"
+      alt="Toggle sound"
+      class="w-full h-full"
+    />
+  </button>
+</div>
+
+<!-- ================= STATIC HOME WINDOW ================= -->
+<div
+  class="fixed left-1/2 top-[calc(50%+100px)]
+         -translate-x-1/2 -translate-y-1/2 z-40"
+>
+<!-- HEADER -->
+<div
+  class="w-[489px] h-[59px]
+         bg-[#656565] dark:bg-[#313541]
+         border-4 border-[#656565] dark:border-[#FFFCF8]
+         border-b-6
+         rounded-t-[50px]
+         flex items-center px-6
+         text-white text-xl font-bold
+         shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)]"
+>
+  home
+</div>
+
+  <!-- BODY -->
+  <div
+    class="w-[489px] h-[378px] bg-[#fffcf8] dark:bg-[#313541]
+           border-4 border-[#656565] border-t-0 dark:border-[#FFFCF8]
+           rounded-b-[50px] overflow-hidden
+           flex flex-col items-center justify-center gap-10 p-6 shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)]"
+  >
+    <p class="text-2xl text-center leading-relaxed font-regular dark:text-[#FFFCF8]">
+      Computational Media Student<br />@ Georgia Tech
+    </p>
+
+    <div class="flex gap-10">
+      <button data-open="about" class="flex flex-col items-center gap-2">
+        <img src="static/aboutme.png" class="w-16 h-[60px]" alt="About icon" />
+        <span class="font-semibold text-[#656565] dark:text-[#FFFCF8]">about</span>
+      </button>
+
+      <button data-open="projects" class="flex flex-col items-center gap-2">
+        <img src="static/projects.png" class="w-16 h-[60px]" alt="Projects icon" />
+        <span class="font-semibold text-[#656565] dark:text-[#FFFCF8]">projects</span>
+      </button>
+
+      <button data-open="contact" class="flex flex-col items-center gap-2">
+        <img src="static/contact.png" class="w-16 h-[60px]" alt="Contact icon" />
+        <span class="font-semibold text-[#656565] dark:text-[#FFFCF8]">contact</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= POPUP WINDOWS ================= -->
+<!-- NOTE: Each popup is built with "header + body" to avoid corner gaps -->
+
+<!-- ABOUT -->
+<div id="about" data-window class="fixed top-32 left-32 hidden z-50">
+  <div
+    data-window-header
+    class="w-[595px] h-[59px] bg-[#656565] dark:bg-[#313541]
+         border-4 border-[#656565] dark:border-[#FFFCF8]
+         border-b-6
+         rounded-t-[50px]
+         flex items-center px-6
+         text-white text-xl font-bold
+         shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)]"
+  >
+    about me !
+    <button class="ml-auto close-btn text-white text-xl font-bold">[x]</button>
+  </div>
+
+  <div
+  class="w-[595px] h-[465px] bg-[#fffcf8] dark:bg-[#313541]
+         border-4 border-[#656565] dark:border-[#FFFCF8] border-t-0
+         rounded-b-[50px] shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)] overflow-hidden pr-2 pl-2"
+>
+  <!-- SCROLL CONTAINER -->
+  <div
+  id="about-scroll"
+  class="h-full overflow-y-auto px-9 py-8 custom-scroll"
+  >
+    <div class="flex flex-col gap-10 text-[#656565]">
+
+  <!-- ===== PROFILE HEADER ===== -->
+  <div class="flex items-center gap-6">
+    <!-- Avatar -->
+    <img
+  id="profile-img"
+  src="static/profilepicture.png"
+  alt="Profile image"
+  class="w-[135px] h-[135px] rounded-full cursor-pointer
+         transition-transform duration-200 hover:scale-[1.03]"
+/>
+
+    <!-- Name + info -->
+    <div class="flex flex-col gap-2">
+      <h2 class="text-4xl font-bold text-[#ffb3b3]">
+        Jacquelyn Phan
+      </h2>
+      <p class="text-lg font-medium dark:text-[#FFFCF8]">
+        Computational Media Student @ GT
+      </p>
+      <p class="text-sm dark:text-[#FFFCF8]">
+        People & Interaction Design
+      </p>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <hr class="border-[#656565] dark:border-[#FFFCF8] /40 rounded-full" />
+
+  <!-- ===== ABOUT TEXT ===== -->
+  <div class="text-xl leading-relaxed space-y-6 dark:text-[#FFFCF8]" id="about-text">
+
+  <!-- FULL VERSION -->
+  <div id="about-full" class="space-y-6">
+    <p>
+      I’m a
+      <span class="font-medium text-[#ffb3b3]">third-year Computational Media</span>
+      student at
+      <span class="font-medium text-[#ffb3b3]">Georgia Tech</span>
+      with concentrations in
+      <span class="font-medium text-[#ffb3b3]">People and Interaction Design</span>.
+    </p>
+
+    <p>
+      I’ve always been fascinated by the relationship between humans and technology.
+      I love exploring how we think, how we feel, and how design can make interactions
+      smoother, kinder, and more intuitive.
+    </p>
+
+    <p>
+      My passion for UX/UI and human-centered computing comes from wanting to bridge
+      the growing gap between people and the digital tools we rely on.
+    </p>
+
+    <p>
+      I’m constantly learning, experimenting, and finding inspiration in the ways
+      people interact with the world.
+    </p>
+  </div>
+
+  <!-- SHORT VERSION -->
+  <div id="about-short" class="space-y-4 hidden">
+    <p>
+      I’m a Computational Media student at Georgia Tech focused on
+      <span class="font-medium text-[#ffb3b3]">human-centered design</span>
+      and creating thoughtful, intuitive digital experiences.
+    </p>
+  </div>
+
+  <button
+  id="tldr-btn"
+  class="inline-flex items-center gap-2
+         px-5 py-2 rounded-full
+         bg-[#eebfbf] text-[#656565]
+         text-lg font-bold
+         shadow-sm
+         hover:bg-[#ffb3b3]
+         active:scale-[0.98]
+         transition"
+>
+  <span class="leading-none">tl;dr</span>
+  <span class="text-[#656565]/70 font-black leading-none">↻</span>
+</button>
+
+</div>
+
+  <!-- ===== EDUCATION ===== -->
+  <div class="space-y-3">
+    <h3 class="text-2xl font-bold dark:text-[#FFFCF8]">
+      EDUCATION
+    </h3>
+
+    <div class="flex gap-4 items-start">
+      <div class="w-1 bg-[#656565]/40 rounded-full"></div>
+      <div>
+        <p class="text-lg font-bold text-[#656565]/80 dark:text-[#FFFCF8]/80">
+          Bachelor of Science in Computational Media
+        </p>
+        <p class="text-base font-medium text-[#656565]/60 dark:text-[#FFFCF8]/60">
+          Concentration in People & Interaction Design
+        </p>
+        <p class="text-base text-[#656565]/60 dark:text-[#FFFCF8]/60">
+          Expected Graduation: May 2027
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- ===== SKILLS ===== -->
+  <div class="space-y-3">
+    <h3 class="text-2xl font-bold dark:text-[#FFFCF8]">
+      SKILLS
+    </h3>
+    <ul class="list-disc pl-6 text-xl font-medium space-y-1 marker:text-[#656565]/70 dark:marker:text-[#FFFCF8] dark:text-[#FFFCF8]">
+      <li>Figma</li>
+      <li>Java, Python, C, HTML, CSS</li>
+      <li>Prototyping</li>
+      <li>Wireframing</li>
+    </ul>
+  </div>
+
+  <!-- ===== LANGUAGE ===== -->
+  <div class="space-y-3">
+    <h3 class="text-2xl font-bold dark:text-[#FFFCF8]">
+      LANGUAGE PROFICIENCY
+    </h3>
+    <p class="text-xl leading-relaxed dark:text-[#FFFCF8]">
+      I have native fluency in
+      <span class="font-medium text-[#ffb3b3]">English</span>
+      and
+      <span class="font-medium text-[#ffb3b3]">Vietnamese</span>,
+      and can speak beginner-level
+      <span class="font-medium text-[#ffb3b3]">Japanese</span>.
+    </p>
+  </div>
+
+  <!-- ===== OTHER INTERESTS ===== -->
+  <div class="space-y-3">
+    <h3 class="text-2xl font-bold dark:text-[#FFFCF8]
+">
+      OTHER INTERESTS
+    </h3>
+      <ul class="list-disc pl-6 text-xl font-medium space-y-1 marker:text-[#656565]/70 dark:text-[#FFFCF8]  dark:marker:text-[#FFFCF8]">
+      <li>illustration</li>
+      <li>music (piano, violin, guitar, composition)</li>
+      <li>video games</li>
+      <li>crafting!</li>
+    </ul>
+  </div>
+
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+<!-- ✅ FIX: this extra closing </div> properly closes the ABOUT window -->
+
+
+<!-- PROJECTS -->
+<div id="projects" data-window class="fixed top-40 left-48 hidden z-50">
+
+  <!-- HEADER -->
+  <div
+    data-window-header
+    class="w-[820px] h-[59px]
+           bg-[#656565] dark:bg-[#313541]
+           border-4 border-[#656565] dark:border-[#FFFCF8]
+           border-b-6
+           rounded-t-[50px]
+           flex items-center px-6
+           text-white text-xl font-bold cursor-move select-none
+           shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)]"
+  >
+    projects
+    <button class="ml-auto close-btn text-white text-xl font-bold">[x]</button>
+  </div>
+
+  <!-- BODY -->
+  <div
+    class="relative w-[820px] h-[570px]
+           bg-[#fffcf8] dark:bg-[#313541]
+           border-4 border-[#656565] dark:border-[#FFFCF8]
+           border-t-0
+           rounded-b-[50px]
+           shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)] overflow-hidden"
+  >
+
+    <!-- PROJECT LIST -->
+    <div
+      id="projects-list"
+      class="absolute inset-0 overflow-y-auto
+             p-8 space-y-12
+             text-[#656565] dark:text-[#FFFCF8] custom-scroll"
+    >
+
+      <!-- FULL STACK -->
+      <p class="text-[24px] font-bold">
+        FULL STACK
+      </p>
+
+<!-- CareerHub -->
+<div class="project-card group flex gap-6 cursor-pointer" data-project="careerhub">
+  <img
+    src="static/careerhub.png"
+    class="w-[325px] h-[217px] rounded-[18px] object-cover
+           transition-transform duration-300 ease-out
+           group-hover:scale-[1.03]"
+  />
+  <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-[32px] font-bold">CareerHub</p>
+    <p class="text-2xl font-medium dark:text-[#FFFCF8] text-[#656565]/50">
+      Frontend Lead | Scrum Master
+    </p>
+    <p class="text-base font-light">
+      A Django-based hiring platform for recruiters and job seekers.
+    </p>
+  </div>
+</div>
+
+<!-- Hello World -->
+<div class="project-card group flex gap-6 cursor-pointer" data-project="helloworld">
+  <img
+    src="static/helloworld.png"
+    class="w-[325px] h-[217px] rounded-[18px] object-cover
+           transition-transform duration-300 ease-out
+           group-hover:scale-[1.03]"
+  />
+  <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-[32px] font-bold">Hello World</p>
+    <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
+      Frontend Lead | Scrum Master
+    </p>
+    <p class="text-base font-light">
+      A collaborative travel scrapbooking web app with interactive maps.
+    </p>
+  </div>
+</div>
+
+<!-- Gachapon -->
+<div class="project-card group flex gap-6 cursor-pointer" data-project="gachapon">
+  <img
+    src="static/gachapon.png"
+    class="w-[325px] h-[217px] rounded-[18px] object-cover
+           transition-transform duration-300 ease-out
+           group-hover:scale-[1.03]"
+  />
+  <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-[32px] font-bold">Gachapon</p>
+    <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
+      Full Stack Developer
+    </p>
+    <p class="text-base font-light">
+      A hackathon project for tracking blind boxes and collectibles.
+    </p>
+  </div>
+</div>
+
+<!-- PersonaCat -->
+<div class="project-card group flex gap-6 cursor-pointer" data-project="personacat">
+  <img
+    src="static/personacat.png"
+    class="w-[325px] h-[217px] rounded-[18px] object-cover
+           transition-transform duration-300 ease-out
+           group-hover:scale-[1.03]"
+  />
+  <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-[32px] font-bold">PersonaCat</p>
+    <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
+      Full Stack Developer
+    </p>
+    <p class="text-base font-light">
+      A playful MBTI-style personality quiz built with vanilla web tech.
+    </p>
+  </div>
+</div>
+
+<!-- UX / UI -->
+<p class="text-[24px] font-bold pt-8">UX / UI DESIGNS</p>
+
+<!-- FastClinic -->
+<div class="project-card group flex gap-6 cursor-pointer" data-project="fastclinic">
+  <img
+    src="static/fastclinic.png"
+    class="w-[325px] h-[217px] rounded-[18px] object-cover
+           transition-transform duration-300 ease-out
+           group-hover:scale-[1.03]"
+  />
+  <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-[32px] font-bold">FastClinic</p>
+    <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
+      UX/UI Designer
+    </p>
+    <p class="text-base font-light">
+      A mobile healthcare UX project focused on reducing friction.
+    </p>
+  </div>
+</div>
+
+<!-- TaskMe -->
+<div class="project-card group flex gap-6 cursor-pointer" data-project="taskme">
+  <img
+    src="static/taskme.png"
+    class="w-[325px] h-[217px] rounded-[18px] object-cover
+           transition-transform duration-300 ease-out
+           group-hover:scale-[1.03]"
+  />
+  <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-[32px] font-bold">TaskMe</p>
+    <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
+      UX/UI Designer
+    </p>
+    <p class="text-base font-light">
+      A task management UX project focused on clarity and prioritization.
+    </p>
+  </div>
+</div>
+
+<!-- GAMES -->
+<p class="text-[24px] font-bold pt-8">GAMES</p>
+
+<!-- GochiTales -->
+<div class="project-card group flex gap-6 cursor-pointer" data-project="gochitales">
+  <img
+    src="static/gochitales.png"
+    class="w-[325px] h-[217px] rounded-[18px] object-cover
+           transition-transform duration-300 ease-out
+           group-hover:scale-[1.03]"
+  />
+  <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-[32px] font-bold" dark:text-[#FFFCF8] >GochiTales</p>
+    <p class="text-base font-light">
+      A Game Boy Advance platformer built in C and ARM assembly.
+    </p>
+  </div>
+</div>
+
+    </div> <!-- END #projects-list -->
+  </div>   <!-- END projects body -->
+</div>     <!-- END #projects window -->
+
+<!-- PROJECT DETAIL WINDOW -->
+<div
+  id="project-detail-window"
+  data-window
+  class="fixed top-32 left-72 hidden z-60"
+>
+
+  <!-- HEADER -->
+  <div
+    data-window-header
+    class="w-[820px] h-[59px]
+           bg-[#656565] dark:bg-[#313541]
+           border-4 border-[#656565] dark:border-[#FFFCF8]
+           border-b-6
+           rounded-t-[50px]
+           flex items-center px-8
+           text-white text-2xl font-bold
+           cursor-move select-none
+           shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)]"
+  >
+    <span id="project-title"></span>
+    <button class="ml-auto close-btn text-white text-2xl font-bold">[x]</button>
+  </div>
+
+  <!-- BODY -->
+  <div
+    class="w-[820px] max-h-[620px]
+           bg-[#fffcf8] dark:bg-[#313541]
+           border-4 border-[#656565] dark:border-[#FFFCF8]
+           border-t-0
+           rounded-b-[50px]
+           shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)]
+           overflow-y-auto
+           px-10 py-8 space-y-10
+           text-[#656565] dark:text-[#FFFCF8] custom-scroll"
+  >
+
+    <!-- META GRID -->
+    <div class="grid grid-cols-2 gap-y-7 text-xl">
+      <div>
+        <p class="font-bold">Project Classification</p>
+        <p id="project-classification"></p>
+      </div>
+
+      <div class="text-right">
+        <p class="font-bold">Duration</p>
+        <p id="project-duration"></p>
+      </div>
+
+      <div>
+        <p class="font-bold">Project Type</p>
+        <p id="project-type"></p>
+      </div>
+
+      <div class="text-right">
+        <p class="font-bold">Platform</p>
+        <p id="project-platform"></p>
+      </div>
+    </div>
+
+    <!-- ROLE + DEMO -->
+    <div class="flex items-center gap-6 text-xl pt-2 w-full">
+      <div class="flex-1 min-w-0">
+        <p class="font-bold">Role</p>
+        <p
+          id="project-role"
+          class="whitespace-nowrap overflow-hidden text-clip"
+        ></p>
+      </div>
+
+      <div id="project-demo" class="flex-shrink-0"></div>
+    </div>
+
+    <hr class="border-[#656565]/40 dark:border-[#FFFCF8]/40 my-6">
+
+    <!-- TAGS -->
+    <div id="project-tags" class="flex gap-3 flex-wrap"></div>
+
+    <!-- OVERVIEW -->
+    <section class="space-y-3">
+      <h3 class="text-2xl font-bold">Project Overview</h3>
+      <p id="project-overview" class="text-xl leading-relaxed"></p>
+    </section>
+
+    <!-- GOAL -->
+    <section class="space-y-3">
+      <h3 class="text-2xl font-bold">The Goal</h3>
+      <p id="project-goal" class="text-xl leading-relaxed"></p>
+    </section>
+
+    <!-- FRAMEWORK -->
+    <section class="space-y-3">
+      <h3 class="text-2xl font-bold">Framework</h3>
+      <ul
+        id="project-framework"
+        class="list-disc pl-6 text-xl
+               marker:text-[#656565]/70
+               dark:marker:text-[#FFFCF8]"
+      ></ul>
+    </section>
+
+    <!-- CONTRIBUTIONS -->
+    <section class="space-y-3">
+      <h3 class="text-2xl font-bold">My Contributions</h3>
+      <p
+        id="project-contributions"
+        class="text-xl leading-relaxed"
+      ></p>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="space-y-3">
+      <h3 class="text-2xl font-bold">Project Gallery</h3>
+      <div
+        id="project-gallery"
+        class="grid grid-cols-2 gap-4"
+      ></div>
+    </section>
+
+  </div>
+</div>
+
+
+
+<!-- CONTACT -->
+<div id="contact" data-window class="fixed top-40 left-40 hidden z-50">
+
+  <!-- HEADER -->
+  <div
+    data-window-header
+    class="w-[560px] h-[59px]
+           bg-[#656565] dark:bg-[#313541]
+           border-4 border-[#656565] dark:border-[#FFFCF8]
+           border-b-6
+           rounded-t-[50px]
+           flex items-center px-6
+           text-white text-xl font-bold
+           cursor-move select-none
+           shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)]"
+  >
+    contact me!
+    <button class="ml-auto close-btn text-white text-xl font-bold">[x]</button>
+  </div>
+
+  <!-- BODY -->
+  <div
+    class="w-[560px] h-[420px]
+           bg-[#fffcf8] dark:bg-[#313541]
+           border-4 border-[#656565] dark:border-[#FFFCF8]
+           border-t-0
+           rounded-b-[50px]
+           shadow-[0_12px_24px_rgba(0,0,0,0.15),_-6px_0_16px_rgba(0,0,0,0.08),_6px_0_16px_rgba(0,0,0,0.08)]
+         dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)]
+           flex flex-col items-center justify-center gap-10 p-10
+           text-[#656565] dark:text-[#FFFCF8]"
+  >
+
+    <!-- ICON BUTTONS -->
+    <div class="flex gap-16">
+
+      <!-- GitHub -->
+      <a
+    href="https://github.com/jqphan"
+    target="_blank"
+    class="flex flex-col items-center gap-3"
+  >
+    <img
+      src="static/github.png"
+      class="w-20 h-20 opacity-70 hover:opacity-100 transition"
+    />
+    <span class="text-lg font-bold">github</span>
+  </a>
+
+      <!-- LinkedIn -->
+      <a
+  href="https://www.linkedin.com/in/jacquelynqphan"
+  target="_blank"
+  class="flex flex-col items-center gap-3"
+>
+  <img
+    src="static/linkedin.png"
+    alt="LinkedIn"
+    class="w-20 h-20 opacity-70 hover:opacity-100 transition"
+  />
+  <span class="text-lg font-bold">linkedin</span>
+</a>
+
+      <!-- Email -->
+      <a
+  href="mailto:phanjacquelynq@gmail.com"
+  class="flex flex-col items-center gap-3"
+>
+  <img
+    src="static/email.png"
+    alt="Email"
+    class="w-20 h-20 opacity-70 hover:opacity-100 transition"
+  />
+  <span class="text-lg font-bold">email</span>
+</a>
+
+    </div>
+
+    <!-- Helper text -->
+    <p class="text-sm font-semibold text-[#656565]/50 dark:text-[#FFFCF8]">
+      clicking an icon will open a new tab!
+    </p>
+
+  </div>
+</div>
+
+<!-- ================= WINDOW LOGIC ================= -->
+<script>
+
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {},
+    },
+  }
+
+  // ================= SOUND EFFECTS =================
+const clickSound = new Audio("static/sounds/click.mp3");
+const closeSound = new Audio("static/sounds/close.mp3");
+const lightMode = new Audio("static/sounds/lightmode.mp3");
+const darkMode = new Audio("static/sounds/darkmode.mp3");
+const stickerPop = new Audio("static/sounds/pop.mp3");
+
+
+// optional: reduce volume for subtle UI feel
+clickSound.volume = 0.4;
+closeSound.volume = 0.4;
+lightMode.volume = 0.4;
+darkMode.volume = 0.4;
+stickerPop.volume = 0.4;
+
+let activeStickers = [];
+const MAX_STICKERS = 5;
+
+let soundEnabled = true;
+
+
+// helper to allow overlapping clicks
+function playSound(sound) {
+  if (!soundEnabled) return;
+  sound.currentTime = 0;
+  sound.play().catch(() => {});
+}
+let highestZ = 50;
+
+// open windows (SAFE: won't crash if id missing)
+document.querySelectorAll("[data-open]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    playSound(clickSound);
+
+    const id = btn.dataset.open;
+    const win = document.getElementById(id);
+    if (!win) return;
+
+    win.classList.remove("hidden");
+    win.style.zIndex = ++highestZ;
+  });
+});
+
+
+// close windows
+document.querySelectorAll(".close-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    playSound(closeSound);
+    e.target.closest("[data-window]")?.classList.add("hidden");
+  });
+});
+
+// drag + bounds (works with new header/body structure)
+document.querySelectorAll("[data-window]").forEach(win => {
+  const header = win.querySelector("[data-window-header]");
+  if (!header) return;
+
+  let dragging = false, ox = 0, oy = 0;
+
+  header.addEventListener("mousedown", e => {
+  playSound(clickSound);
+
+  dragging = true;
+  ox = e.clientX - win.offsetLeft;
+  oy = e.clientY - win.offsetTop;
+  win.style.zIndex = ++highestZ;
+});
+
+  document.addEventListener("mousemove", e => {
+    if (!dragging) return;
+
+    const maxX = window.innerWidth - win.offsetWidth;
+    const maxY = window.innerHeight - win.offsetHeight;
+
+    win.style.left = Math.min(Math.max(0, e.clientX - ox), maxX) + "px";
+    win.style.top  = Math.min(Math.max(0, e.clientY - oy), maxY) + "px";
+  });
+
+  document.addEventListener("mouseup", () => dragging = false);
+});
+
+
+const tldrBtn = document.getElementById("tldr-btn");
+const fullText = document.getElementById("about-full");
+const shortText = document.getElementById("about-short");
+const scrollArea = document.getElementById("about-scroll");
+
+let isShort = false;
+
+if (tldrBtn && fullText && shortText && scrollArea) {
+  tldrBtn.addEventListener("click", () => {
+    isShort = !isShort;
+    playSound(clickSound);
+
+
+    fullText.classList.toggle("hidden", isShort);
+    shortText.classList.toggle("hidden", !isShort);
+
+    // update label
+    const tldrLabel = tldrBtn.querySelector("span"); // first span
+    tldrLabel.textContent = isShort ? "show more" : "tl;dr";
+
+    // reset scroll so users see the text
+    scrollArea.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+const projectData = {
+  careerhub: {
+    title: "CareerHub",
+    duration: "12 weeks",
+    classification: "UX/UI Design & Full Stack Development",
+    type: "Group Project",
+    platform: "Web Application",
+    role: "Full Stack Developer | Frontend Lead | Scrum Master",
+    tags: ["django", "python", "tailwind css", "javascript", "sql"],
+    overview: `
+      CareerHub is a team-developed web application built with Django that streamlines the hiring process for recruiters and job seekers. The platform features role-based dashboards, applicant tracking, and candidate discovery to support a more organized and efficient recruitment workflow.
+    `,
+    goal: "Design a clear, efficient hiring pipeline that reduces friction for recruiters and job seekers.",
+    framework: ["Django", "Python", "Tailwind CSS"],
+    demoUrl: "https://careerhub-joelsari.pythonanywhere.com/",
+    contributions: `
+      Led UX/UI design from wireframing to final implementation, created reusable frontend components, implemented recruiter and job seeker workflows, and facilitated agile processes including sprint planning, standups, and retrospectives.
+    `,
+    gallery: [
+      "static/careerhub/placeholder1.png",
+      "static/careerhub/placeholder2.png",
+      "static/careerhub/placeholder3.png",
+      "static/careerhub/placeholder4.png"
+    ]
+  },
+
+  helloworld: {
+    title: "HelloWorld",
+    duration: "6 weeks",
+    classification: "UX/UI Design & Full Stack Development",
+    type: "Group Project",
+    platform: "Web Application",
+    role: "Frontend Lead | Full Stack Developer | Scrum Master",
+    tags: ["django", "javascript", "html", "css", "figma"],
+    overview: `
+      HelloWorld is a travel scrapbooking web application that allows users to document and share their journeys by pinning locations on an interactive map. The platform transforms personal travel memories into a collaborative, visual storytelling experience.
+    `,
+    goal: "Create an engaging, map-based journaling experience that makes travel memories easy to document and share.",
+    framework: ["Django", "JavaScript", "HTML/CSS"],
+    demoUrl: "https://jqphan.pythonanywhere.com/",
+    contributions: `
+      Designed user flows and interface prototypes in Figma, led frontend implementation, and developed social features that allow users to connect with friends and explore shared travel maps.
+    `,
+    gallery: [
+      "static/helloworld/placeholder1.png",
+      "static/helloworld/placeholder2.png",
+      "static/helloworld/placeholder3.png"
+    ]
+  },
+
+  gachapon: {
+    title: "GachaPon",
+    duration: "3 days",
+    classification: "UX/UI Design & Full Stack Development",
+    type: "Hackathon Project",
+    platform: "Web Application",
+    role: "Full Stack Developer",
+    tags: ["react", "supabase", "sql", "javascript", "figma"],
+    overview: `
+      GachaPon is a hackathon project designed to help collectors track blind boxes and collectible items. Users can log their collections, share posts, and browse a social feed centered around collecting culture.
+    `,
+    goal: "Support collectors in organizing, sharing, and discovering collectibles through a social-first experience.",
+    framework: ["React", "Supabase", "SQL"],
+    demoUrl: "",
+    contributions: `
+      Designed the UI with a scrapbook-inspired aesthetic, implemented database-backed collection tracking, and built core social feed functionality within a rapid hackathon timeframe.
+    `,
+    gallery: [
+      "static/gachapon/placeholder1.png",
+      "static/gachapon/placeholder2.png",
+      "static/gachapon/placeholder3.png"
+    ]
+  },
+
+  personacat: {
+    title: "PersonaCat",
+    duration: "Personal Project",
+    classification: "UX/UI Design & Frontend Development",
+    type: "Individual Project",
+    platform: "Web Experience",
+    role: "Designer & Developer",
+    tags: ["javascript", "html", "css", "figma"],
+    overview: `
+      PersonaCat is a cat-themed Myers-Briggs personality quiz that blends playful visuals with interactive logic. The experience delivers personalized personality results in a lighthearted, engaging format.
+    `,
+    goal: "Create an enjoyable personality quiz experience that emphasizes visual storytelling and user engagement.",
+    framework: ["JavaScript", "HTML", "CSS"],
+    demoUrl: "https://jqphan.github.io/catPersonalityTest/",
+    contributions: `
+      Designed the quiz flow, implemented dynamic result logic, created original digital illustrations, and optimized the experience for responsiveness across devices.
+    `,
+    gallery: [
+      "static/personacat/placeholder1.png",
+      "static/personacat/placeholder2.png"
+    ]
+  },
+
+  fastclinic: {
+    title: "FastClinic",
+    duration: "UX Design Sprint",
+    classification: "UX/UI Design",
+    type: "Design Project",
+    platform: "Mobile App (Concept)",
+    role: "UX/UI Designer",
+    tags: ["ux design", "figma", "prototyping", "mobile"],
+    overview: `
+      FastClinic is a mobile UX design project focused on improving healthcare experiences by simplifying appointment scheduling, check-ins, and patient navigation. The design prioritizes clarity and accessibility in time-sensitive medical contexts.
+    `,
+    goal: "Reduce friction and stress for patients navigating healthcare services on mobile devices.",
+    framework: ["Figma", "UX Research", "Prototyping"],
+    demoUrl: "",
+    contributions: `
+      Conducted user research, designed wireframes and high-fidelity prototypes, and refined interface decisions to support accessibility and ease of use.
+    `,
+    gallery: [
+      "static/fastclinic/placeholder1.png",
+      "static/fastclinic/placeholder2.png",
+      "static/fastclinic/placeholder3.png"
+    ]
+  },
+
+  taskme: {
+    title: "TaskMe",
+    duration: "UX Design Project",
+    classification: "UX/UI Design",
+    type: "Design Project",
+    platform: "Mobile App (Concept)",
+    role: "UX/UI Designer",
+    tags: ["ux design", "figma", "mobile", "productivity"],
+    overview: `
+      TaskMe is a mobile-focused UX design project that helps users manage and prioritize tasks by category and urgency. The interface emphasizes clarity, visual hierarchy, and reduced cognitive load.
+    `,
+    goal: "Help users stay organized and productive without overwhelming them.",
+    framework: ["Figma", "UX Design"],
+    demoUrl: "",
+    contributions: `
+      Designed task categorization flows, established visual hierarchy, and created interactive prototypes to test usability and clarity.
+    `,
+    gallery: [
+      "static/taskme/placeholder1.png",
+      "static/taskme/placeholder2.png"
+    ]
+  },
+
+  gochitales: {
+    title: "GochiTales",
+    duration: "Semester Project",
+    classification: "Game Design & Systems Programming",
+    type: "Individual Project",
+    platform: "Game Boy Advance",
+    role: "Game Designer & Developer",
+    tags: ["c", "arm assembly", "game design", "gba"],
+    overview: `
+      GochiTales is a cat-themed 2D platformer developed for the Game Boy Advance using C and ARM assembly. Built within real hardware constraints, the project emphasizes performance-aware programming, memory management, and responsive player interaction.
+    `,
+    goal: "Create a polished retro game experience while working within strict hardware and memory limitations.",
+    framework: ["C", "ARM Assembly"],
+    demoUrl: "https://jqphan.github.io/gochitales_game/",
+    contributions: `
+      Implemented core gameplay systems, sprite rendering, collision detection, input handling, and memory management while designing original art assets and level mechanics.
+    `,
+    gallery: [
+      "static/gochitales/placeholder1.png",
+      "static/gochitales/placeholder2.png",
+      "static/gochitales/placeholder3.png"
+    ]
+  }
+};
+
+
+const projectWindow = document.getElementById("project-detail-window");
+const projectTitle = document.getElementById("project-title");
+
+const projectDuration = document.getElementById("project-duration");
+const projectClassification = document.getElementById("project-classification");
+const projectType = document.getElementById("project-type");
+const projectRole = document.getElementById("project-role");
+const projectPlatform = document.getElementById("project-platform");
+
+
+const projectTags = document.getElementById("project-tags");
+const projectOverview = document.getElementById("project-overview");
+const projectGoal = document.getElementById("project-goal");
+const projectFramework = document.getElementById("project-framework");
+const projectDemo = document.getElementById("project-demo");
+const projectContributions = document.getElementById("project-contributions");
+const projectGallery = document.getElementById("project-gallery");
+
+
+
+
+document.querySelectorAll(".project-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const key = card.dataset.project;
+    playSound(clickSound);
+
+    const data = projectData[key];
+    if (!data) return;
+
+    projectTitle.textContent = data.title || "";
+    projectDuration.textContent = data.duration || "";
+    projectClassification.textContent = data.classification || "";
+    projectType.textContent = data.type || "";
+    projectRole.textContent = data.role || "";
+    projectPlatform.textContent = data.platform || "";
+    projectContributions.textContent = data.contributions || "";
+
+    projectGallery.innerHTML = "";
+
+(data.gallery || []).slice(0, 4).forEach(src => {
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = `${data.title} screenshot`;
+  img.className =
+    "w-full h-48 object-cover rounded-xl border border-[#656565]/20";
+
+  projectGallery.appendChild(img);
+});
+
+    // tags
+    projectTags.innerHTML = "";
+    (data.tags || []).forEach(tag => {
+      const span = document.createElement("span");
+      span.className =
+        "px-4 py-1 rounded-full bg-[#ffc3c3] text-white font-bold";
+      span.textContent = tag;
+      projectTags.appendChild(span);
+    });
+
+     projectDemo.innerHTML = "";
+
+if (data.demoUrl) {
+  const link = document.createElement("a");
+  link.href = data.demoUrl;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+
+  link.className =
+    "inline-flex items-center px-6 py-2 rounded-full " +
+    "bg-[#FFB3B3] text-[#FFFCF8] font-bold text-base " +
+    "hover:opacity-90 transition";
+
+  link.textContent = "view live demo";
+
+  projectDemo.appendChild(link);
+}
+    
+    projectOverview.textContent = data.overview || "";
+    projectGoal.textContent = data.goal || "";
+
+    projectFramework.innerHTML = "";
+    (data.framework || []).forEach(tool => {
+      const li = document.createElement("li");
+      li.textContent = tool;
+      projectFramework.appendChild(li);
+    });
+
+    projectWindow.classList.remove("hidden");
+    projectWindow.style.zIndex = ++highestZ;
+  });
+});
+
+const toggleBtn = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
+const root = document.documentElement;
+
+// load saved preference
+if (localStorage.theme === "dark") {
+  root.classList.add("dark");
+  themeIcon.src = "static/lightmode.png";
+} else {
+  themeIcon.src = "static/darkmode.png";
+}
+
+toggleBtn.addEventListener("click", () => {
+  const isDark = root.classList.toggle("dark");
+
+  localStorage.theme = isDark ? "dark" : "light";
+  playSound(isDark ? darkMode : lightMode);
+
+  updateIcons(); // 🔑 THIS fixes your issue
+});
+
+const volumeBtn = document.getElementById("volume-toggle");
+const volumeIcon = document.getElementById("volume-icon");
+
+function updateIcons() {
+  const isDark = root.classList.contains("dark");
+
+  // THEME ICON
+  themeIcon.src = isDark
+    ? "static/lightmode_dark.png"
+    : "static/darkmode.png";
+
+  // VOLUME ICON
+  if (soundEnabled) {
+    volumeIcon.src = isDark
+      ? "static/volumeon_dark.png"
+      : "static/volumeon.png";
+  } else {
+    volumeIcon.src = isDark
+      ? "static/volumeoff_dark.png"
+      : "static/volumeoff.png";
+  }
+}
+
+function updateVolumeIcon() {
+  const isDark = root.classList.contains("dark");
+
+  if (!soundEnabled) {
+    volumeIcon.src = isDark
+      ? "static/volumeoff_dark.png"
+      : "static/volumeoff.png";
+  } else {
+    volumeIcon.src = isDark
+      ? "static/volumeon_dark.png"
+      : "static/volumeon.png";
+  }
+}
+
+volumeBtn.addEventListener("click", () => {
+  soundEnabled = !soundEnabled;
+  localStorage.sound = soundEnabled ? "on" : "off";
+
+  if (soundEnabled) {
+    playSound(clickSound);
+  }
+
+  updateVolumeIcon();
+});
+
+// load saved theme
+if (localStorage.theme === "dark") {
+  root.classList.add("dark");
+}
+
+// load saved sound
+if (localStorage.sound === "off") {
+  soundEnabled = false;
+}
+
+// sync icons immediately
+updateIcons();
+
+updateVolumeIcon();
+
+const bg = document.getElementById("desktop-bg");
+
+const stickers = [
+  "static/stickers/buzz.png",
+  "static/stickers/miffy.png",
+  "static/stickers/cat.png",
+  "static/stickers/monkey.png"
+];
+
+bg.addEventListener("click", (e) => {
+  if (e.target !== bg) return;
+
+  if (activeStickers.length >= MAX_STICKERS) {
+    const oldest = activeStickers.shift();
+    oldest.remove();
+  }
+
+  playSound(stickerPop);
+
+  const sticker = document.createElement("img");
+  sticker.src = stickers[Math.floor(Math.random() * stickers.length)];
+  sticker.className = "sticker";
+
+  sticker.style.left = `${e.clientX - 32}px`;
+  sticker.style.top = `${e.clientY - 32}px`;
+
+  const rotation = Math.random() * 50 - 25;
+  sticker.style.setProperty("--rot", `${rotation}deg`);
+
+  document.body.appendChild(sticker);
+  activeStickers.push(sticker);
+
+  setTimeout(() => {
+    sticker.remove();
+    activeStickers = activeStickers.filter(s => s !== sticker);
+  }, 1400);
+});
+
+const hiText = "hi,";
+const nameText = " i’m jacquelyn!";
+
+const hiEl = document.getElementById("greet-hi");
+const nameEl = document.getElementById("greet-name");
+
+let i = 0;
+let j = 0;
+
+function typeHi() {
+  if (i < hiText.length) {
+    hiEl.textContent += hiText[i++];
+    setTimeout(typeHi, 80);
+  } else {
+    setTimeout(typeName, 200); // small pause
+  }
+}
+
+function typeName() {
+  if (j < nameText.length) {
+    nameEl.textContent += nameText[j++];
+    setTimeout(typeName, 70);
+  }
+}
+
+// start typing once page loads
+window.addEventListener("load", typeHi);
+
+
+document.querySelectorAll("[data-sound]").forEach(el => {
+  el.addEventListener("click", () => {
+    playSound(clickSound);
+  });
+});
+
+const profileImg = document.getElementById("profile-img");
+
+const normalImg = "static/profilepicture.png";
+const doodleImg = "static/profilepicture_doodle.png";
+
+let isDoodle = false;
+
+profileImg.addEventListener("click", () => {
+  isDoodle = !isDoodle;
+  profileImg.src = isDoodle ? doodleImg : normalImg;
+
+  // optional: sound feedback
+  playSound(clickSound);
+});
+
+</script>
+
+</body>
+</html>
