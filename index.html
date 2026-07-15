@@ -89,31 +89,28 @@
   </style>
 </head>
 
-<body class="bg-[#fffcf8] overflow-hidden">
+<body class="bg-[#fffcf8] dark:bg-[#313541] overflow-hidden">
 
 <!-- ================= BACKGROUND ================= -->
 <div class="fixed inset-0 z-0 pointer-events-none">
   <!-- MAIN BACKGROUND -->
   <div
     id="desktop-bg"
-    class="absolute inset-0
-           bg-[#fffcf8] dark:bg-[#313541]
-           pointer-events-auto"
+    class="absolute inset-0 bg-[#fffcf8] dark:bg-[#313541] pointer-events-auto"
   ></div>
 
   <!-- BOTTOM GRADIENT -->
   <div
-  class="absolute bottom-0 w-full h-[364px]
-         bg-gradient-to-t
-         from-[#FFDCDC] to-[#FFB9B9]
-         dark:from-[#EF9191] dark:to-[#FFCED1]
-         pointer-events-none
-         animate-gradient"
-></div>
+    class="absolute bottom-0 left-0 w-full h-[364px] z-[1]
+           bg-gradient-to-t from-[#FFDCDC] to-[#FFB9B9]
+           dark:from-[#EF9191] dark:to-[#FFCED1]
+           pointer-events-none"
+    style="background-image: linear-gradient(to top, #FFDCDC, #FFB9B9);"
+  ></div>
 </div>
 
-  <!-- Greeting -->
-  <h1
+<!-- Greeting -->
+<h1
   id="greeting"
   class="fixed left-1/2 top-[calc(50%-260px)]
          -translate-x-1/2 text-[80px] leading-none tracking-tight
@@ -126,28 +123,30 @@
   ></span>
   <span
     id="greet-name"
-    data-text=" i’m jacquelyn!"
+    data-text=" i’m jacquelyn"
     class="font-bold text-[#ffb3b3] dark:text-[#ED9494]"
   ></span>
 </h1>
 
-<!-- TOP LEFT CONTROLS -->
-<div
-  class="fixed top-4 left-4 z-[100]
-         flex items-center gap-3"
+<!-- Headline -->
+<p
+  id="headline"
+  class="fixed left-1/2 top-[calc(50%-160px)]
+         -translate-x-1/2 -translate-y-1/2
+         max-w-[520px] text-center text-[17px] leading-snug
+         text-[#8a8a8a] dark:text-[#c9c9c9] z-10"
 >
+  </p>
+
+<!-- TOP LEFT CONTROLS -->
+<div class="fixed top-4 left-4 z-[100] flex items-center gap-3">
   <!-- THEME TOGGLE -->
   <button
     id="theme-toggle"
     class="w-8 h-8 opacity-80 hover:opacity-100 transition"
     aria-label="Toggle dark mode"
   >
-    <img
-      id="theme-icon"
-      src="static/lightmode.png"
-      alt="Toggle theme"
-      class="w-full h-full"
-    />
+    <img id="theme-icon" src="static/lightmode.png" alt="Toggle theme" class="w-full h-full" />
   </button>
 
   <!-- VOLUME TOGGLE -->
@@ -156,15 +155,9 @@
     class="w-8 h-8 opacity-80 hover:opacity-100 transition"
     aria-label="Toggle sound"
   >
-    <img
-      id="volume-icon"
-      src="static/volumeon.png"
-      alt="Toggle sound"
-      class="w-full h-full"
-    />
+    <img id="volume-icon" src="static/volumeon.png" alt="Toggle sound" class="w-full h-full" />
   </button>
 </div>
-
 <!-- ================= STATIC HOME WINDOW ================= -->
 <div
   class="fixed left-1/2 top-[calc(50%+100px)]
@@ -194,26 +187,33 @@
          dark:shadow-[0_14px_28px_rgba(0,0,0,0.45),_-8px_0_20px_rgba(0,0,0,0.3),_8px_0_20px_rgba(0,0,0,0.3)]"
   >
     <p class="text-2xl text-center leading-relaxed font-regular dark:text-[#FFFCF8]">
-      Computational Media Student<br />@ Georgia Tech
-    </p>
+  UX/UI Designer & Frontend Developer
+
+  <span class="text-lg text-[#656565]/60 dark:text-[#FFFCF8]/70">
+    Computational Media @ Georgia Tech
+  </span>
+</p>
 
     <div class="flex gap-10">
-      <button data-open="about" class="flex flex-col items-center gap-2">
-        <img src="static/aboutme.png" class="w-16 h-[60px]" alt="About icon" />
-        <span class="font-semibold text-[#656565] dark:text-[#FFFCF8]">about</span>
-      </button>
+  <button data-open="about" class="flex flex-col items-center gap-2">
+    <img src="static/aboutme.svg" class="w-16 h-[60px] dark:hidden" alt="About icon" />
+    <img src="static/aboutme_dark.svg" class="w-16 h-[60px] hidden dark:block" alt="About icon" />
+    <span class="font-semibold text-[#656565] dark:text-[#FFFCF8]">about</span>
+  </button>
 
-      <button data-open="projects" class="flex flex-col items-center gap-2">
-        <img src="static/projects.png" class="w-16 h-[60px]" alt="Projects icon" />
-        <span class="font-semibold text-[#656565] dark:text-[#FFFCF8]">projects</span>
-      </button>
+  <button data-open="projects" class="flex flex-col items-center gap-2">
+    <img src="static/projects.svg" class="w-16 h-[60px] dark:hidden" alt="Projects icon" />
+    <img src="static/projects_dark.svg" class="w-16 h-[60px] hidden dark:block" alt="Projects icon" />
+    <span class="font-semibold text-[#656565] dark:text-[#FFFCF8]">projects</span>
+  </button>
 
-      <button data-open="contact" class="flex flex-col items-center gap-2">
-        <img src="static/contact.png" class="w-16 h-[60px]" alt="Contact icon" />
-        <span class="font-semibold text-[#656565] dark:text-[#FFFCF8]">contact</span>
-      </button>
-    </div>
-  </div>
+  <button data-open="contact" class="flex flex-col items-center gap-2">
+    <img src="static/contact.svg" class="w-16 h-[60px] dark:hidden" alt="Contact icon" />
+    <img src="static/contact_dark.svg" class="w-16 h-[60px] hidden dark:block" alt="Contact icon" />
+    <span class="font-semibold text-[#656565] dark:text-[#FFFCF8]">contact</span>
+  </button>
+</div>
+</div>
 </div>
 
 <!-- ================= POPUP WINDOWS ================= -->
@@ -284,7 +284,7 @@
   <div id="about-full" class="space-y-6">
     <p>
       I’m a
-      <span class="font-medium text-[#ffb3b3]">third-year Computational Media</span>
+      <span class="font-medium text-[#ffb3b3]">fourth-year Computational Media</span>
       student at
       <span class="font-medium text-[#ffb3b3]">Georgia Tech</span>
       with concentrations in
@@ -298,7 +298,7 @@
     </p>
 
     <p>
-      My passion for UX/UI and human-centered computing comes from wanting to bridge
+      My passion for UX/UI, frontend development, and human-centered computing comes from wanting to bridge
       the growing gap between people and the digital tools we rely on.
     </p>
 
@@ -313,7 +313,7 @@
     <p>
       I’m a Computational Media student at Georgia Tech focused on
       <span class="font-medium text-[#ffb3b3]">human-centered design</span>
-      and creating thoughtful, intuitive digital experiences.
+      and creating thoughtful and buildable digital experiences.
     </p>
   </div>
 
@@ -355,18 +355,48 @@
       </div>
     </div>
   </div>
-  <!-- ===== SKILLS ===== -->
-  <div class="space-y-3">
-    <h3 class="text-2xl font-bold dark:text-[#FFFCF8]">
-      SKILLS
-    </h3>
-    <ul class="list-disc pl-6 text-xl font-medium space-y-1 marker:text-[#656565]/70 dark:marker:text-[#FFFCF8] dark:text-[#FFFCF8]">
-      <li>Figma</li>
-      <li>Java, Python, C, HTML, CSS</li>
-      <li>Prototyping</li>
-      <li>Wireframing</li>
-    </ul>
+<!-- ===== SKILLS ===== -->
+<div class="space-y-5">
+  <h3 class="text-2xl font-bold dark:text-[#FFFCF8]">
+    SKILLS
+  </h3>
+
+  <div class="space-y-4">
+    <div>
+      <p class="text-lg font-semibold text-[#ffb3b3] mb-1">Frontend Development</p>
+      <ul class="list-disc pl-6 text-xl font-medium space-y-1 marker:text-[#656565]/70 dark:marker:text-[#FFFCF8] dark:text-[#FFFCF8]">
+        <li>React, TypeScript, JavaScript</li>
+        <li>HTML, CSS, Tailwind CSS, Bootstrap</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-lg font-semibold text-[#ffb3b3] mb-1">UX/UI Design</p>
+      <ul class="list-disc pl-6 text-xl font-medium space-y-1 marker:text-[#656565]/70 dark:marker:text-[#FFFCF8] dark:text-[#FFFCF8]">
+        <li>User Research, Usability Testing</li>
+        <li>Information Architecture, User Flows, User Journeys</li>
+        <li>Interaction Design, Wireframing, Prototyping</li>
+        <li>Graphic Design</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-lg font-semibold text-[#ffb3b3] mb-1">Programming & Data</p>
+      <ul class="list-disc pl-6 text-xl font-medium space-y-1 marker:text-[#656565]/70 dark:marker:text-[#FFFCF8] dark:text-[#FFFCF8]">
+        <li>Java, Python, C</li>
+        <li>Django, SQL (PostgreSQL, SQLite), Supabase</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-lg font-semibold text-[#ffb3b3] mb-1">Tools</p>
+      <ul class="list-disc pl-6 text-xl font-medium space-y-1 marker:text-[#656565]/70 dark:marker:text-[#FFFCF8] dark:text-[#FFFCF8]">
+        <li>Figma, Adobe Creative Suite</li>
+        <li>Git, GitHub</li>
+      </ul>
+    </div>
   </div>
+</div>
 
   <!-- ===== LANGUAGE ===== -->
   <div class="space-y-3">
@@ -444,10 +474,30 @@
              text-[#656565] dark:text-[#FFFCF8] custom-scroll"
     >
 
-      <!-- FULL STACK -->
+      <!-- FEATURED CASE STUDIES -->
       <p class="text-[24px] font-bold">
-        FULL STACK
+        FEATURED PROJECTS
       </p>
+
+<!-- Cubby -->
+<div class="project-card group flex gap-6 cursor-pointer" data-project="cubby">
+  <img
+    src="static/cubby.png"
+    class="w-[325px] h-[217px] rounded-[18px] object-cover
+           transition-transform duration-300 ease-out
+           group-hover:scale-[1.03]"
+  />
+  <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-sm font-bold text-[#ffb3b3]">PERSONAL PRODUCT</p>
+    <p class="text-[32px] font-bold">Cubby</p>
+    <p class="text-2xl font-medium dark:text-[#FFFCF8] text-[#656565]/50">
+      UX/UI Designer | Frontend Developer
+    </p>
+    <p class="text-base font-light">
+      A cozy, customizable storage app exploring how digital organization can feel more personal and approachable.
+    </p>
+  </div>
+</div>
 
 <!-- CareerHub -->
 <div class="project-card group flex gap-6 cursor-pointer" data-project="careerhub">
@@ -459,8 +509,9 @@
   />
   <div class="flex flex-col gap-2 max-w-[380px]">
     <p class="text-[32px] font-bold">CareerHub</p>
+    <p class="text-sm font-bold text-[#ffb3b3]">FULL STACK CASE STUDY</p>
     <p class="text-2xl font-medium dark:text-[#FFFCF8] text-[#656565]/50">
-      Frontend Lead | Scrum Master
+      UX/UI Designer | Frontend Lead
     </p>
     <p class="text-base font-light">
       A Django-based hiring platform for recruiters and job seekers.
@@ -478,14 +529,38 @@
   />
   <div class="flex flex-col gap-2 max-w-[380px]">
     <p class="text-[32px] font-bold">Hello World</p>
+    <p class="text-sm font-bold text-[#ffb3b3]">TEAM PRODUCT</p>
     <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
-      Frontend Lead | Scrum Master
+      UX/UI Designer | Frontend Lead
     </p>
     <p class="text-base font-light">
       A collaborative travel scrapbooking web app with interactive maps.
     </p>
   </div>
 </div>
+
+<!-- Anchor -->
+<div class="project-card group flex gap-6 cursor-pointer" data-project="anchor">
+  <img
+    src="static/anchor.png"
+    class="w-[325px] h-[217px] rounded-[18px] object-cover
+           transition-transform duration-300 ease-out
+           group-hover:scale-[1.03]"
+  />
+  <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-sm font-bold text-[#ffb3b3]">UX/UI DESIGN CASE STUDY</p>
+    <p class="text-[32px] font-bold">Anchor</p>
+    <p class="text-2xl font-medium dark:text-[#FFFCF8] text-[#656565]/50">
+      UX/UI Designer | Product Designer
+    </p>
+    <p class="text-base font-light">
+      A calm UX/UI design project focused on clarity, support, and guided user flows.
+    </p>
+  </div>
+</div>
+
+<!-- SELECTED BUILDS & EXPERIMENTS -->
+<p class="text-[24px] font-bold pt-8">SELECTED BUILDS & EXPERIMENTS</p>
 
 <!-- Gachapon -->
 <div class="project-card group flex gap-6 cursor-pointer" data-project="gachapon">
@@ -496,6 +571,7 @@
            group-hover:scale-[1.03]"
   />
   <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-sm font-bold text-[#ffb3b3]">HACKATHON BUILD</p>
     <p class="text-[32px] font-bold">Gachapon</p>
     <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
       Full Stack Developer
@@ -515,18 +591,16 @@
            group-hover:scale-[1.03]"
   />
   <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-sm font-bold text-[#ffb3b3]">FRONTEND EXPERIMENT</p>
     <p class="text-[32px] font-bold">PersonaCat</p>
     <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
-      Full Stack Developer
+      Frontend Developer | Interaction Designer
     </p>
     <p class="text-base font-light">
       A playful MBTI-style personality quiz built with vanilla web tech.
     </p>
   </div>
 </div>
-
-<!-- UX / UI -->
-<p class="text-[24px] font-bold pt-8">UX / UI DESIGNS</p>
 
 <!-- FastClinic -->
 <div class="project-card group flex gap-6 cursor-pointer" data-project="fastclinic">
@@ -537,6 +611,7 @@
            group-hover:scale-[1.03]"
   />
   <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-sm font-bold text-[#ffb3b3]">UX/UI CONCEPT</p>
     <p class="text-[32px] font-bold">FastClinic</p>
     <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
       UX/UI Designer
@@ -556,6 +631,7 @@
            group-hover:scale-[1.03]"
   />
   <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-sm font-bold text-[#ffb3b3]">UX/UI CONCEPT</p>
     <p class="text-[32px] font-bold">TaskMe</p>
     <p class="text-2xl font-medium text-[#656565]/50 dark:text-[#FFFCF8]">
       UX/UI Designer
@@ -566,9 +642,6 @@
   </div>
 </div>
 
-<!-- GAMES -->
-<p class="text-[24px] font-bold pt-8">GAMES</p>
-
 <!-- GochiTales -->
 <div class="project-card group flex gap-6 cursor-pointer" data-project="gochitales">
   <img
@@ -578,6 +651,7 @@
            group-hover:scale-[1.03]"
   />
   <div class="flex flex-col gap-2 max-w-[380px]">
+    <p class="text-sm font-bold text-[#ffb3b3]">TECHNICAL GAME PROJECT</p>
     <p class="text-[32px] font-bold" dark:text-[#FFFCF8] >GochiTales</p>
     <p class="text-base font-light">
       A Game Boy Advance platformer built in C and ARM assembly.
@@ -681,6 +755,36 @@
       <p id="project-goal" class="text-xl leading-relaxed"></p>
     </section>
 
+    <!-- PROBLEM -->
+    <section class="space-y-3" id="project-problem-section">
+      <h3 class="text-2xl font-bold">The Problem</h3>
+      <p id="project-problem" class="text-xl leading-relaxed"></p>
+    </section>
+
+    <!-- DESIGN FOCUS -->
+    <section class="space-y-3" id="project-design-focus-section">
+      <h3 class="text-2xl font-bold">Design Focus</h3>
+      <p id="project-design-focus" class="text-xl leading-relaxed"></p>
+    </section>
+
+    <!-- TECHNICAL FOCUS -->
+    <section class="space-y-3" id="project-technical-focus-section">
+      <h3 class="text-2xl font-bold">Technical Focus</h3>
+      <p id="project-technical-focus" class="text-xl leading-relaxed"></p>
+    </section>
+
+    <!-- OUTCOME -->
+    <section class="space-y-3" id="project-outcome-section">
+      <h3 class="text-2xl font-bold">Outcome</h3>
+      <p id="project-outcome" class="text-xl leading-relaxed"></p>
+    </section>
+
+    <!-- REFLECTION -->
+    <section class="space-y-3" id="project-reflection-section">
+      <h3 class="text-2xl font-bold">Reflection</h3>
+      <p id="project-reflection" class="text-xl leading-relaxed"></p>
+    </section>
+
     <!-- FRAMEWORK -->
     <section class="space-y-3">
       <h3 class="text-2xl font-bold">Framework</h3>
@@ -749,49 +853,38 @@
            text-[#656565] dark:text-[#FFFCF8]"
   >
 
-    <!-- ICON BUTTONS -->
     <div class="flex gap-16">
-
       <!-- GitHub -->
       <a
-    href="https://github.com/jqphan"
-    target="_blank"
-    class="flex flex-col items-center gap-3"
-  >
-    <img
-      src="static/github.png"
-      class="w-20 h-20 opacity-70 hover:opacity-100 transition"
-    />
-    <span class="text-lg font-bold">github</span>
-  </a>
+        href="https://github.com/jqphan"
+        target="_blank"
+        class="flex flex-col items-center gap-3"
+      >
+        <img src="static/github.svg" alt="GitHub" class="w-20 h-20 opacity-70 hover:opacity-100 transition dark:hidden">
+        <img src="static/github_dark.svg" alt="GitHub" class="w-20 h-20 opacity-70 hover:opacity-100 transition hidden dark:block">
+        <span class="text-lg font-bold">github</span>
+      </a>
 
       <!-- LinkedIn -->
       <a
-  href="https://www.linkedin.com/in/jacquelynqphan"
-  target="_blank"
-  class="flex flex-col items-center gap-3"
->
-  <img
-    src="static/linkedin.png"
-    alt="LinkedIn"
-    class="w-20 h-20 opacity-70 hover:opacity-100 transition"
-  />
-  <span class="text-lg font-bold">linkedin</span>
-</a>
+        href="https://www.linkedin.com/in/jacquelynqphan"
+        target="_blank"
+        class="flex flex-col items-center gap-3"
+      >
+        <img src="static/linkedin.svg" alt="LinkedIn" class="w-20 h-20 opacity-70 hover:opacity-100 transition dark:hidden">
+        <img src="static/linkedin_dark.svg" alt="LinkedIn" class="w-20 h-20 opacity-70 hover:opacity-100 transition hidden dark:block">
+        <span class="text-lg font-bold">linkedin</span>
+      </a>
 
       <!-- Email -->
       <a
-  href="mailto:phanjacquelynq@gmail.com"
-  class="flex flex-col items-center gap-3"
->
-  <img
-    src="static/email.png"
-    alt="Email"
-    class="w-20 h-20 opacity-70 hover:opacity-100 transition"
-  />
-  <span class="text-lg font-bold">email</span>
-</a>
-
+        href="mailto:phanjacquelynq@gmail.com"
+        class="flex flex-col items-center gap-3"
+      >
+        <img src="static/email.svg" alt="Email" class="w-20 h-20 opacity-70 hover:opacity-100 transition dark:hidden">
+        <img src="static/email_dark.svg" alt="Email" class="w-20 h-20 opacity-70 hover:opacity-100 transition hidden dark:block">
+        <span class="text-lg font-bold">email</span>
+      </a>
     </div>
 
     <!-- Helper text -->
@@ -801,7 +894,6 @@
 
   </div>
 </div>
-
 <!-- ================= WINDOW LOGIC ================= -->
 <script>
 
@@ -920,28 +1012,108 @@ if (tldrBtn && fullText && shortText && scrollArea) {
 }
 
 const projectData = {
+  cubby: {
+    title: "Cubby",
+    duration: "Personal Project",
+    classification: "UX/UI Design & Frontend Development",
+    type: "Personal Product",
+    platform: "Web Application",
+    caseStudyLevel: "featured",
+    cardLabel: "PERSONAL PRODUCT",
+    role: "UX/UI Designer | Frontend Developer | Product Designer",
+    tags: [
+      "ux/ui",
+      "frontend",
+      "product design",
+      "branding",
+      "react",
+      "tailwind css"
+    ],
+    overview: `
+      Cubby is a personal product project exploring how digital storage and organization can feel more cozy, customizable, and emotionally approachable. Instead of treating file management as purely functional, Cubby uses the metaphor of a personal cubby space to make organization feel softer, more visual, and easier to personalize.
+
+      I created Cubby as a UX/UI and frontend project to practice building a product from concept to interface direction. My work included defining the product idea, shaping the visual identity, designing the core user experience, and beginning the frontend implementation of a soft, minimal interface system.
+    `,
+    problem: `
+      Many digital organization tools feel rigid, cluttered, or overly technical. While they may be functional, they often lack a sense of personality or emotional ease. Cubby explores how a storage experience could help users feel more comfortable organizing their digital spaces by making the interface feel personal, calm, and visually approachable.
+    `,
+    goal: "Design a cozy and customizable digital organization experience that helps users store, sort, and return to personal items without feeling overwhelmed.",
+    designFocus: `
+      Product concept, visual identity, interaction design, cozy interface language, personalization, user flow, and reusable UI patterns.
+    `,
+    technicalFocus: `
+      Frontend architecture, responsive layout, reusable components, Tailwind styling, and translating Figma concepts into buildable interface sections.
+    `,
+    framework: ["React", "Tailwind CSS", "Figma"],
+    demoUrl: "",
+    githubUrl: "",
+    contributions: `
+      I defined the product direction, developed the cozy visual identity, explored logo and branding concepts, designed the core interface structure, and began translating the design system into frontend components. I focused on making the product feel personal while keeping the interface simple, soft, and usable.
+    `,
+    outcome: `
+      Cubby established a strong product direction, visual identity, and interface foundation for a cozy digital organization tool. The project currently functions as both a UX/UI case study and a frontend build-in-progress.
+    `,
+    reflection: `
+      Cubby helped me understand how visual design, product metaphor, and frontend implementation can shape the emotional feel of a digital tool. This project also strengthened my ability to think like both a designer and a builder: every design choice needed to support the brand experience while still being realistic to implement as a responsive web interface.
+    `,
+    gallery: [
+      "static/Cubby/Screenshot1.png",
+      "static/Cubby/Screenshot2.png",
+      "static/Cubby/Screenshot3.png",
+    ]
+  },
+
   careerhub: {
     title: "CareerHub",
     duration: "12 weeks",
     classification: "UX/UI Design & Full Stack Development",
     type: "Group Project",
     platform: "Web Application",
-    role: "Full Stack Developer | Frontend Lead | Scrum Master",
-    tags: ["django", "python", "tailwind css", "javascript", "sql"],
+    caseStudyLevel: "featured",
+    cardLabel: "FULL STACK CASE STUDY",
+    role: "UX/UI Designer | Frontend Lead | Full Stack Developer | Scrum Master",
+    tags: [
+      "ux/ui",
+      "frontend",
+      "full stack",
+      "django",
+      "python",
+      "tailwind css",
+      "javascript",
+      "sql"
+    ],
     overview: `
-      CareerHub is a team-developed web application built with Django that streamlines the hiring process for recruiters and job seekers. The platform features role-based dashboards, applicant tracking, and candidate discovery to support a more organized and efficient recruitment workflow.
+      CareerHub is a team-developed hiring platform built with Django that helps job seekers, recruiters, and administrators manage different parts of the hiring process. The project focused on creating role-specific dashboards and workflows so each user type could access the tools most relevant to them without unnecessary clutter.
+
+      As UX/UI Designer, Frontend Lead, Full Stack Developer, and Scrum Master, I helped connect the design direction with the technical implementation. I worked on translating product requirements into user flows, designing and implementing frontend interfaces, and organizing team progress through agile planning.
     `,
-    goal: "Design a clear, efficient hiring pipeline that reduces friction for recruiters and job seekers.",
-    framework: ["Django", "Python", "Tailwind CSS"],
+    problem: `
+      Hiring platforms often need to support multiple types of users at once, but each user group has different goals. Job seekers need to discover and manage applications, recruiters need to review candidates and post opportunities, and administrators need oversight. CareerHub needed a clear interface structure that could support these different workflows without making the platform feel confusing or overloaded.
+    `,
+    goal: "Design and build a clearer hiring experience that supports multiple user roles while keeping each workflow focused, organized, and easy to navigate.",
+    designFocus: `
+      Role-based dashboards, user flows, visual hierarchy, recruiter/job seeker workflows, and reusable interface patterns.
+    `,
+    technicalFocus: `
+      Django, Python, Tailwind CSS, JavaScript, SQL, role-based views, and responsive frontend implementation.
+    `,
+    framework: ["Django", "Python", "Tailwind CSS", "JavaScript", "SQL"],
     demoUrl: "https://careerhub-joelsari.pythonanywhere.com/",
+    githubUrl: "https://github.com/Joel-sari/CareerHub",
     contributions: `
-      Led UX/UI design from wireframing to final implementation, created reusable frontend components, implemented recruiter and job seeker workflows, and facilitated agile processes including sprint planning, standups, and retrospectives.
+      I led the frontend direction from wireframes to implementation, created reusable interface patterns, helped design role-specific dashboards, implemented recruiter and job seeker workflows, and coordinated team progress through sprint planning, standups, and retrospectives.
+    `,
+    outcome: `
+      The final project included role-specific dashboards, hiring workflows, and frontend interfaces that supported job seekers, recruiters, and administrators within one full-stack platform.
+    `,
+    reflection: `
+      CareerHub helped me understand how UX decisions change once they are connected to real user roles, backend logic, and team development constraints. I learned how to design interfaces that were not only visually clear, but also practical to build and maintain within a full-stack application.
     `,
     gallery: [
-      "static/careerhub/placeholder1.png",
-      "static/careerhub/placeholder2.png",
-      "static/careerhub/placeholder3.png",
-      "static/careerhub/placeholder4.png"
+      "static/CareerHub/Screenshot1.png",
+      "static/CareerHub/Screenshot2.png",
+      "static/CareerHub/Screenshot3.png",
+      "static/CareerHub/Screenshot4.png",
     ]
   },
 
@@ -951,22 +1123,140 @@ const projectData = {
     classification: "UX/UI Design & Full Stack Development",
     type: "Group Project",
     platform: "Web Application",
-    role: "Frontend Lead | Full Stack Developer | Scrum Master",
-    tags: ["django", "javascript", "html", "css", "figma"],
+    caseStudyLevel: "featured",
+    cardLabel: "TEAM PRODUCT",
+    role: "UX/UI Designer | Frontend Lead | Full Stack Developer | Scrum Master",
+    tags: [
+      "ux/ui",
+      "frontend",
+      "full stack",
+      "django",
+      "javascript",
+      "html",
+      "css",
+      "figma",
+      "maps"
+    ],
     overview: `
-      HelloWorld is a travel scrapbooking web application that allows users to document and share their journeys by pinning locations on an interactive map. The platform transforms personal travel memories into a collaborative, visual storytelling experience.
+      HelloWorld is a collaborative travel scrapbooking web application that allows users to document trips, save memories, and pin locations on an interactive map. The project explored how travel journaling could feel more visual, social, and personal by turning memories into map-based stories.
+
+      As UX/UI Designer, Frontend Lead, Full Stack Developer, and Scrum Master, I worked across both design and implementation. I designed user flows and interface prototypes, contributed to the frontend build, and helped shape features that allowed users to connect with friends and explore shared travel maps.
     `,
-    goal: "Create an engaging, map-based journaling experience that makes travel memories easy to document and share.",
-    framework: ["Django", "JavaScript", "HTML/CSS"],
+    problem: `
+      Travel memories are often scattered across photos, notes, social media posts, and map locations. HelloWorld explored how those pieces could be brought together into one visual experience, allowing users to document where they went, what they experienced, and who they shared it with.
+    `,
+    goal: "Create an engaging travel journaling experience that makes memories easy to document, organize, and share through a visual map-based interface.",
+    designFocus: `
+      Map-based storytelling, social travel sharing, user flows, visual hierarchy, and interaction design.
+    `,
+    technicalFocus: `
+      Django, JavaScript, HTML, CSS, interactive map features, responsive web layout, and social feature implementation.
+    `,
+    framework: ["Django", "JavaScript", "HTML", "CSS", "Figma"],
     demoUrl: "https://jqphan.pythonanywhere.com/",
+    githubUrl: "https://github.com/Joel-sari/Hello-World",
     contributions: `
-      Designed user flows and interface prototypes in Figma, led frontend implementation, and developed social features that allow users to connect with friends and explore shared travel maps.
+      I designed the core user experience in Figma, led frontend implementation, developed interface sections for travel posts and social features, and helped coordinate the team’s workflow through agile planning.
+    `,
+    outcome: `
+      The final project created a collaborative travel journaling experience with map-based memory sharing, social features, and a responsive web interface.
+    `,
+    reflection: `
+      HelloWorld strengthened my ability to design around emotional and personal user content. It challenged me to think about how interface structure, social features, and technical implementation work together to create a more engaging product experience.
     `,
     gallery: [
-      "static/helloworld/placeholder1.png",
-      "static/helloworld/placeholder2.png",
-      "static/helloworld/placeholder3.png"
+      "static/HelloWorld/Screenshot1.png",
+      "static/HelloWorld/Screenshot2.png",
     ]
+  },
+
+  anchor: {
+    title: "Anchor",
+    duration: "UX/UI Design Project",
+    classification: "UX/UI Design",
+    type: "Design Project",
+    platform: "Mobile App Concept",
+    caseStudyLevel: "featured",
+    cardLabel: "UX/UI DESIGN CASE STUDY",
+    role: "UX/UI Designer | Product Designer",
+    tags: [
+      "ux research",
+      "ux/ui",
+      "mobile design",
+      "figma",
+      "prototyping",
+      "visual design"
+    ],
+    overview: `
+      Anchor is a UX/UI design project focused on creating a calm and supportive digital experience for users who need help feeling more grounded, organized, or guided. The project explores how interface design can reduce friction and create a greater sense of clarity through thoughtful structure, soft visual hierarchy, and intentional interaction patterns.
+
+      As the UX/UI Designer, I focused on defining the user problem, mapping core flows, designing wireframes, and developing high-fidelity screens in Figma. The project emphasizes clarity, emotional ease, and a visual system that supports trust and focus.
+    `,
+    problem: `
+      Many digital tools designed to support organization, wellness, or personal reflection can become overwhelming when they include too many features, dense layouts, or unclear next steps. Anchor focuses on creating a simpler experience that helps users understand what to do next without adding unnecessary stress.
+    `,
+    goal: "Design a calm and intuitive digital experience that helps users feel supported, focused, and guided through their main tasks.",
+    designFocus: `
+      User flows, wireframing, high-fidelity UI design, visual hierarchy, interaction design, emotional tone, and prototyping.
+    `,
+    technicalFocus: `
+      Figma, interactive prototyping, mobile interface design, and design system foundations.
+    `,
+    framework: ["Figma", "Wireframing", "Prototyping", "UX Research"],
+    demoUrl: "https://www.figma.com/proto/upPtjN1LPLwW5BLeADVrdh/Anchor?node-id=123-2613&t=vUTLUaSRUa09AjKn-1",
+    githubUrl: "",
+    contributions: `
+      I defined the core user flow, designed wireframes and high-fidelity screens, created a calm visual direction, and refined the interface to make the experience feel easier to understand and navigate.
+    `,
+    outcome: `
+      The final design established a calm mobile experience with clear flows, polished high-fidelity screens, and a visual system focused on emotional clarity and ease of use.
+    `,
+    reflection: `
+      Anchor helped me practice designing for emotional clarity, not just task completion. I learned how spacing, language, visual hierarchy, and interaction flow can make a digital product feel calmer and more supportive.
+    `,
+  
+  },
+
+  personacat: {
+    title: "PersonaCat",
+    duration: "Personal Project",
+    classification: "Frontend Development & Interaction Design",
+    type: "Individual Project",
+    platform: "Web Experience",
+    caseStudyLevel: "short",
+    cardLabel: "FRONTEND EXPERIMENT",
+    role: "Frontend Developer | Interaction Designer | Illustrator",
+    tags: [
+      "frontend",
+      "interaction design",
+      "javascript",
+      "html",
+      "css",
+      "figma",
+      "illustration"
+    ],
+    overview: `
+      PersonaCat is a playful MBTI-style personality quiz built with HTML, CSS, and vanilla JavaScript. I designed the quiz flow, created the visual direction, implemented the scoring logic, and built a result reveal experience using custom illustrations and interactive frontend behavior.
+
+      This project helped me practice turning a playful concept into a complete web experience, combining storytelling, visual design, and JavaScript logic.
+    `,
+    goal: "Create an engaging personality quiz that feels playful and visually memorable while still functioning clearly from start to result.",
+    designFocus: `
+      Playful interaction design, custom illustration, quiz flow, visual storytelling, and result screen design.
+    `,
+    technicalFocus: `
+      HTML, CSS, JavaScript, localStorage, dynamic result logic, and responsive web layout.
+    `,
+    framework: ["JavaScript", "HTML", "CSS", "Figma"],
+    demoUrl: "https://jqphan.github.io/catPersonalityTest/",
+    githubUrl: "",
+    contributions: `
+      I designed the quiz flow, wrote the frontend logic for tracking personality dimensions, created original digital illustrations, and built the final result reveal experience.
+    `,
+    shortTakeaway: `
+      A small but complete frontend project showing interaction design, custom visuals, and JavaScript-based result logic.
+    `,
+  
   },
 
   gachapon: {
@@ -975,92 +1265,39 @@ const projectData = {
     classification: "UX/UI Design & Full Stack Development",
     type: "Hackathon Project",
     platform: "Web Application",
-    role: "Full Stack Developer",
-    tags: ["react", "supabase", "sql", "javascript", "figma"],
+    caseStudyLevel: "short",
+    cardLabel: "HACKATHON BUILD",
+    role: "Full Stack Developer | UX/UI Designer",
+    tags: [
+      "full stack",
+      "ux/ui",
+      "react",
+      "supabase",
+      "sql",
+      "javascript",
+      "figma"
+    ],
     overview: `
-      GachaPon is a hackathon project designed to help collectors track blind boxes and collectible items. Users can log their collections, share posts, and browse a social feed centered around collecting culture.
-    `,
-    goal: "Support collectors in organizing, sharing, and discovering collectibles through a social-first experience.",
-    framework: ["React", "Supabase", "SQL"],
-    demoUrl: "",
-    contributions: `
-      Designed the UI with a scrapbook-inspired aesthetic, implemented database-backed collection tracking, and built core social feed functionality within a rapid hackathon timeframe.
-    `,
-    gallery: [
-      "static/gachapon/placeholder1.png",
-      "static/gachapon/placeholder2.png",
-      "static/gachapon/placeholder3.png"
-    ]
-  },
+      GachaPon is a hackathon-built collection tracking app for blind box and collectible communities. The project allowed users to log items, organize collections, and interact with a social feed centered around collecting culture.
 
-  personacat: {
-    title: "PersonaCat",
-    duration: "Personal Project",
-    classification: "UX/UI Design & Frontend Development",
-    type: "Individual Project",
-    platform: "Web Experience",
-    role: "Designer & Developer",
-    tags: ["javascript", "html", "css", "figma"],
-    overview: `
-      PersonaCat is a cat-themed Myers-Briggs personality quiz that blends playful visuals with interactive logic. The experience delivers personalized personality results in a lighthearted, engaging format.
+      I contributed to the full-stack build, database-backed collection features, and scrapbook-inspired interface direction within a short hackathon timeline.
     `,
-    goal: "Create an enjoyable personality quiz experience that emphasizes visual storytelling and user engagement.",
-    framework: ["JavaScript", "HTML", "CSS"],
-    demoUrl: "https://jqphan.github.io/catPersonalityTest/",
-    contributions: `
-      Designed the quiz flow, implemented dynamic result logic, created original digital illustrations, and optimized the experience for responsiveness across devices.
+    goal: "Design and build a playful collection tracking experience that helps users organize collectibles while also making the process feel social, personal, and fun.",
+    designFocus: `
+      Scrapbook-inspired interface, collectible tracking flows, playful visual identity, and social feed layout.
     `,
-    gallery: [
-      "static/personacat/placeholder1.png",
-      "static/personacat/placeholder2.png"
-    ]
-  },
-
-  fastclinic: {
-    title: "FastClinic",
-    duration: "UX Design Sprint",
-    classification: "UX/UI Design",
-    type: "Design Project",
-    platform: "Mobile App (Concept)",
-    role: "UX/UI Designer",
-    tags: ["ux design", "figma", "prototyping", "mobile"],
-    overview: `
-      FastClinic is a mobile UX design project focused on improving healthcare experiences by simplifying appointment scheduling, check-ins, and patient navigation. The design prioritizes clarity and accessibility in time-sensitive medical contexts.
+    technicalFocus: `
+      React, Supabase, SQL, JavaScript, database-backed collection tracking, and social feed functionality.
     `,
-    goal: "Reduce friction and stress for patients navigating healthcare services on mobile devices.",
-    framework: ["Figma", "UX Research", "Prototyping"],
+    framework: ["React", "Supabase", "SQL", "JavaScript", "Figma"],
     demoUrl: "",
+    githubUrl: "",
     contributions: `
-      Conducted user research, designed wireframes and high-fidelity prototypes, and refined interface decisions to support accessibility and ease of use.
+      I designed the visual direction, implemented core collection tracking features, connected user data through Supabase, and helped build the social feed within a rapid hackathon timeframe.
     `,
-    gallery: [
-      "static/fastclinic/placeholder1.png",
-      "static/fastclinic/placeholder2.png",
-      "static/fastclinic/placeholder3.png"
-    ]
-  },
-
-  taskme: {
-    title: "TaskMe",
-    duration: "UX Design Project",
-    classification: "UX/UI Design",
-    type: "Design Project",
-    platform: "Mobile App (Concept)",
-    role: "UX/UI Designer",
-    tags: ["ux design", "figma", "mobile", "productivity"],
-    overview: `
-      TaskMe is a mobile-focused UX design project that helps users manage and prioritize tasks by category and urgency. The interface emphasizes clarity, visual hierarchy, and reduced cognitive load.
+    shortTakeaway: `
+      A rapid full-stack hackathon project showing product thinking, database-backed features, and playful UI direction.
     `,
-    goal: "Help users stay organized and productive without overwhelming them.",
-    framework: ["Figma", "UX Design"],
-    demoUrl: "",
-    contributions: `
-      Designed task categorization flows, established visual hierarchy, and created interactive prototypes to test usability and clarity.
-    `,
-    gallery: [
-      "static/taskme/placeholder1.png",
-      "static/taskme/placeholder2.png"
-    ]
   },
 
   gochitales: {
@@ -1069,22 +1306,116 @@ const projectData = {
     classification: "Game Design & Systems Programming",
     type: "Individual Project",
     platform: "Game Boy Advance",
-    role: "Game Designer & Developer",
-    tags: ["c", "arm assembly", "game design", "gba"],
+    caseStudyLevel: "short",
+    cardLabel: "TECHNICAL GAME PROJECT",
+    role: "Game Designer | Developer | Illustrator",
+    tags: [
+      "game development",
+      "c",
+      "arm assembly",
+      "gba",
+      "sprite art",
+      "systems programming"
+    ],
     overview: `
-      GochiTales is a cat-themed 2D platformer developed for the Game Boy Advance using C and ARM assembly. Built within real hardware constraints, the project emphasizes performance-aware programming, memory management, and responsive player interaction.
+      GochiTales is a Game Boy Advance platformer built in C and ARM assembly. I implemented player movement, collision detection, sprite rendering, input handling, and memory-conscious gameplay systems while also creating original art assets.
+
+      This project strengthened my technical problem-solving skills by requiring me to design and build within strict hardware and performance constraints.
     `,
-    goal: "Create a polished retro game experience while working within strict hardware and memory limitations.",
+    goal: "Build a functional and visually polished Game Boy Advance platformer while working within strict hardware, memory, and performance constraints.",
+    designFocus: `
+      Sprite design, level feel, player feedback, visual clarity, and playful retro aesthetics.
+    `,
+    technicalFocus: `
+      C, ARM Assembly, sprite rendering, collision detection, input handling, and memory management.
+    `,
     framework: ["C", "ARM Assembly"],
     demoUrl: "https://jqphan.github.io/gochitales_game/",
+    githubUrl: "",
     contributions: `
-      Implemented core gameplay systems, sprite rendering, collision detection, input handling, and memory management while designing original art assets and level mechanics.
+      I implemented the core gameplay loop, player movement, collision logic, sprite rendering, and original visual assets while optimizing the game for GBA hardware limitations.
     `,
-    gallery: [
-      "static/gochitales/placeholder1.png",
-      "static/gochitales/placeholder2.png",
-      "static/gochitales/placeholder3.png"
-    ]
+    shortTakeaway: `
+      A technical game project showing low-level programming, performance constraints, sprite systems, and custom game design.
+    `,
+  },
+
+  fastclinic: {
+    title: "FastClinic",
+    duration: "UX Design Sprint",
+    classification: "UX/UI Design",
+    type: "Design Project",
+    platform: "Mobile App Concept",
+    caseStudyLevel: "short",
+    cardLabel: "UX/UI CONCEPT",
+    role: "UX/UI Designer",
+    tags: [
+      "ux/ui",
+      "figma",
+      "prototyping",
+      "mobile design",
+      "accessibility"
+    ],
+    overview: `
+      FastClinic is a mobile UX/UI concept focused on making healthcare tasks feel clearer and less stressful. I designed appointment scheduling, check-in, and navigation flows with an emphasis on visual hierarchy, accessibility, and reduced cognitive load.
+
+      This project helped me practice designing for time-sensitive contexts where clarity and predictability are especially important.
+    `,
+    goal: "Reduce friction in common healthcare tasks by creating a mobile experience that feels clear, accessible, and easy to follow.",
+    designFocus: `
+      Mobile UX, appointment scheduling, check-in flow, accessibility, visual hierarchy, and reduced cognitive load.
+    `,
+    technicalFocus: `
+      Figma, prototyping, and mobile interface design.
+    `,
+    framework: ["Figma", "Wireframing", "Prototyping"],
+    demoUrl: "https://www.figma.com/proto/9QbUmgFI9cbPyUU9i2zauK/FastClinic?node-id=0-1&t=Gvp6Z8eyTY62xJ7c-1",
+    githubUrl: "",
+    contributions: `
+      I designed the core mobile screens, structured the appointment and check-in flows, created high-fidelity prototypes, and refined the interface to support clarity and ease of use.
+    `,
+    shortTakeaway: `
+      A UX/UI concept focused on healthcare clarity, reduced friction, and mobile-first task flows.
+    `,
+  },
+
+  taskme: {
+    title: "TaskMe",
+    duration: "UX Design Project",
+    classification: "UX/UI Design",
+    type: "Design Project",
+    platform: "Mobile App Concept",
+    caseStudyLevel: "short",
+    cardLabel: "UX/UI CONCEPT",
+    role: "UX/UI Designer",
+    tags: [
+      "ux/ui",
+      "figma",
+      "mobile design",
+      "productivity",
+      "prototyping"
+    ],
+    overview: `
+      TaskMe is a mobile task management concept focused on helping users organize priorities without adding visual clutter. I designed task categorization flows, high-fidelity screens, and interaction patterns that make daily tasks easier to scan and manage.
+
+      This project helped me practice simplifying productivity workflows through hierarchy, spacing, and clear interface structure.
+    `,
+    goal: "Design a task management experience that helps users stay organized while keeping the interface simple, focused, and easy to scan.",
+    designFocus: `
+      Task prioritization, mobile layout, visual hierarchy, categorization, and low-friction interaction design.
+    `,
+    technicalFocus: `
+      Figma, wireframing, prototyping, and mobile interface design.
+    `,
+    framework: ["Figma", "Wireframing", "Prototyping"],
+    demoUrl: "",
+    githubUrl: "",
+    contributions: `
+      I designed the task organization flow, created wireframes and high-fidelity screens, established a clear visual hierarchy, and prototyped the main interactions.
+    `,
+    shortTakeaway: `
+      A focused UX/UI concept showing task prioritization, mobile hierarchy, and simplified productivity flows.
+    `,
   }
 };
 
@@ -1106,6 +1437,12 @@ const projectFramework = document.getElementById("project-framework");
 const projectDemo = document.getElementById("project-demo");
 const projectContributions = document.getElementById("project-contributions");
 const projectGallery = document.getElementById("project-gallery");
+
+const projectProblem = document.getElementById("project-problem");
+const projectDesignFocus = document.getElementById("project-design-focus");
+const projectTechnicalFocus = document.getElementById("project-technical-focus");
+const projectOutcome = document.getElementById("project-outcome");
+const projectReflection = document.getElementById("project-reflection");
 
 
 
@@ -1168,6 +1505,11 @@ if (data.demoUrl) {
     
     projectOverview.textContent = data.overview || "";
     projectGoal.textContent = data.goal || "";
+    projectProblem.textContent = data.problem || "";
+    projectDesignFocus.textContent = data.designFocus || "";
+    projectTechnicalFocus.textContent = data.technicalFocus || "";
+    projectOutcome.textContent = data.outcome || data.shortTakeaway || "";
+    projectReflection.textContent = data.reflection || "";
 
     projectFramework.innerHTML = "";
     (data.framework || []).forEach(tool => {
@@ -1303,8 +1645,8 @@ bg.addEventListener("click", (e) => {
   }, 1400);
 });
 
-const hiText = "hi,";
-const nameText = " i’m jacquelyn!";
+const hiText = document.getElementById("greet-hi").dataset.text;
+const nameText = document.getElementById("greet-name").dataset.text;
 
 const hiEl = document.getElementById("greet-hi");
 const nameEl = document.getElementById("greet-name");
